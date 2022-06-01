@@ -38,6 +38,8 @@ class Minitest::Test    # :nodoc:
   #   end
 
   def self.focus name = nil
+    raise "Cannot use minitest-focus if the env var CI is present" if ENV["CI"]
+
     if name then
       add_to_filter name
     else
